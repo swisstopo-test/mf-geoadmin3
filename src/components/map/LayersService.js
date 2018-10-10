@@ -210,9 +210,11 @@ goog.require('ga_urlutils_service');
                 tooltip: true,
                 label: 'Diemo layer',
                 styleUrl: '//data.int.bgdi.ch/' +
-                    'ch.bfe.ladestellen-elektromobilitaet/data/ch.bfe.ladestellen-elektromobilitaet.styles.json',
+                    'ch.bfe.ladestellen-elektromobilitaet/data/' + 
+                    'ch.bfe.ladestellen-elektromobilitaet.styles.json',
                 geojsonUrl: 'https://data.int.bgdi.ch/' +
-                    'ch.bfe.ladestellen-elektromobilitaet/data/ch.bfe.ladestellen-elektromobilitaet.json',
+                    'ch.bfe.ladestellen-elektromobilitaet/data/' + 
+                    'ch.bfe.ladestellen-elektromobilitaet.json',
                 highlightable: true,
                 background: false,
                 updateDelay: 5000, // every 5sec!
