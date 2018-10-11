@@ -209,10 +209,10 @@ goog.require('ga_urlutils_service');
                 attributionUrl: 'http://www.bfe.admin.ch/index.html?lang=fr',
                 tooltip: true,
                 label: 'Diemo layer',
-                styleUrl: '//data.int.bgdi.ch/' +
+                styleUrl: '//data.geo.admin.ch/' +
                     'ch.bfe.ladestellen-elektromobilitaet/data/' + 
                     'ch.bfe.ladestellen-elektromobilitaet.styles.json',
-                geojsonUrl: 'https://data.int.bgdi.ch/' +
+                geojsonUrl: 'https://data.geo.admin.ch/' +
                     'ch.bfe.ladestellen-elektromobilitaet/data/' + 
                     'ch.bfe.ladestellen-elektromobilitaet.json',
                 highlightable: true,
