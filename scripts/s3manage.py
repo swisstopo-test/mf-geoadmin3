@@ -480,7 +480,7 @@ def parse_arguments(argv):
             print('Cmd activate/info not supported for named branches.')
             print('Please provide a full version path.')
             sys.exit(1)
-    if deploy_target == 'test':
+    if deploy_target == 'infra':
         bucket_name = 'mf-geoadmin4-prod-dublin'
     else:
         bucket_name = 'mf-geoadmin3-%s-dublin' % deploy_target.lower()
