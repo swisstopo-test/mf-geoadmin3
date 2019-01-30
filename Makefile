@@ -270,6 +270,8 @@ help:
 	@echo "- GIT_COMMIT_HASH             (current value: $(GIT_COMMIT_HASH))"
 	@echo "- VARNISH_HOSTS               (current value: ${VARNISH_HOSTS})"
 	@echo "- DEPLOY_TARGET               (current value: ${DEPLOY_TARGET})"
+	@echo "- NAMED_BRANCH                (current value: ${NAMED_BRANCH})"
+	@echo "- CODE_DIR                    (current value: ${CODE_DIR})"
 	@echo
 
 showVariables:
@@ -426,6 +428,10 @@ s3deploybranchint:
 .PHONY: s3deploybranchinfra
 s3deploybranchinfra:
 	make s3deploybranch DEPLOY_TARGET=infra
+
+.PHONY: s3deploybranchtest
+s3deploybranchtest:
+	make s3deploybranch DEPLOY_TARGET=test
 
 .PHONY: s3copybranch
 s3copybranch: guard-DEPLOY_TARGET \

@@ -15,10 +15,12 @@ from textwrap import dedent
 import mimetypes
 
 
+DEFAULT_BUCKET_NAME_PATTERN = r"mf-geoadmin3-(dev|int|prod|infra)-dublin"
+
+
 def usage():
     print(dedent('''\
         Manage map.geo.admin.ch versions in AWS S3 bucket. Please make sure all your env variables are set.
-        (namely S3_MF_GEOADMIN3_INFRA)
 
         Usage:
 
@@ -26,7 +28,7 @@ def usage():
                                                     <upload|list|info|activate|delete> (cmd type)
                                                     <options>
 
-        A verions deployed to S3 is always defined by:
+        A version deployed to S3 is always defined by:
 
         <s3version> = <branch_name>/<sha>/<version>
 
@@ -418,7 +420,6 @@ def exit_usage(cmd_type):
     print('Missing one arg for %s command' % cmd_type)
     sys.exit(1)
 
-
 def parse_arguments(argv):
     if len(argv) < 2:
         exit_usage('UNKNOWN')
@@ -460,7 +461,7 @@ def parse_arguments(argv):
     elif cmd_type in ('list'):
         deploy_target = argv[2].lower()
 
-    if deploy_target not in ('infra', 'int', 'prod'):
+    if deploy_target not in ('infra', 'int', 'prod', 'test'):
         print('%s is not a valid deploy target' % deploy_target)
         sys.exit(1)
 
@@ -479,8 +480,10 @@ def parse_arguments(argv):
             print('Cmd activate/info not supported for named branches.')
             print('Please provide a full version path.')
             sys.exit(1)
-
-    bucket_name = 'mf-geoadmin3-%s-dublin' % deploy_target.lower()
+    if deploy_target == 'test':
+        bucket_name = 'mf-geoadmin4-prod-dublin'
+    else:
+        bucket_name = 'mf-geoadmin3-%s-dublin' % deploy_target.lower()
 
     return (cmd_type, deploy_target, base_dir, named_branch, git_branch,
             bucket_name, s3_path)
