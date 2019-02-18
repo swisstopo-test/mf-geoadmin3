@@ -383,7 +383,7 @@ $(BUILD_DIR)/src: $(BUILD_DIR)
 	rsync -rupE src $(BUILD_DIR)/
 
 $(BUILD_DIR)/prd: $(BUILD_DIR)
-	rsync -rupE prd/lib prd/img prd/locales prd/style prd/cache/   $(BUILD_DIR)/$(VERSION)/
+	rsync -rupE prd/lib prd/img prd/locales prd/style prd/cache/   $(BUILD_DIR)/$(GIT_COMMIT_SHORT)/
 
 # Or simply symlink?
 #$(BUILD_DIR)/src: $(BUILD_DIR)
@@ -694,12 +694,12 @@ prd/geoadmin.appcache: src/geoadmin.mako.appcache \
 	rm -f prd/*.appcache
 	mkdir -p $(dir $@);
 	${PYTHON_CMD} ${MAKO_CMD} \
-	    --var "version=$(VERSION)" \
+	    --var "version=$(GIT_COMMIT_SHORT)" \
 	    --var "deploy_target=$(DEPLOY_TARGET)" \
 	    --var "apache_base_path=$(APACHE_BASE_PATH)" \
 	    --var "languages=$(LANGUAGES)" \
 	    --var "s3basepath=$(S3_BASE_PATH)" $< > $@
-	mv $@ prd/geoadmin.$(VERSION).appcache
+	mv $@ prd/geoadmin.$(GIT_COMMIT_SHORT).appcache
 
 prd/cache/: .build-artefacts/last-version \
 			.build-artefacts/last-api-url
@@ -709,7 +709,7 @@ prd/cache/: .build-artefacts/last-version \
 
 prd/info.json: src/info.mako.json
 	${PYTHON_CMD} ${MAKO_CMD} \
-		--var "version=$(VERSION)" \
+		--var "version=$(GIT_COMMIT_SHORT)" \
 		--var "user_name=$(USER_NAME)" \
 		--var "git_branch=$(DEPLOY_GIT_BRANCH)" \
 		--var "git_commit_date=$(GIT_COMMIT_DATE)" \
@@ -786,21 +786,21 @@ prd/index.html: src/index.mako.html \
 	    ${MAKO_CMD} \
 	    ${MAKO_LAST_VARIABLES_PROD}
 	mkdir -p $(dir $@)
-	$(call buildpage,desktop,prod,$(VERSION),$(VERSION)/,$(S3_BASE_PATH))
+	$(call buildpage,desktop,prod,$(GIT_COMMIT_SHORT),$(GIT_COMMIT_SHORT)/,$(S3_BASE_PATH))
 ## TODO reactivate	${HTMLMIN_CMD} $@ $@
 
 prd/mobile.html: src/index.mako.html \
 	    ${MAKO_CMD} \
 	    ${MAKO_LAST_VARIABLES_PROD}
 	mkdir -p $(dir $@)
-	$(call buildpage,mobile,prod,$(VERSION),$(VERSION)/,$(S3_BASE_PATH))
+	$(call buildpage,mobile,prod,$(GIT_COMMIT_SHORT),$(GIT_COMMIT_SHORT)/,$(S3_BASE_PATH))
 	${HTMLMIN_CMD} $@ $@
 
 prd/embed.html: src/index.mako.html \
 	    ${MAKO_CMD} \
 	    ${MAKO_LAST_VARIABLES_PROD}
 	mkdir -p $(dir $@)
-	$(call buildpage,embed,prod,$(VERSION),$(VERSION)/,$(S3_BASE_PATH))
+	$(call buildpage,embed,prod,$(GIT_COMMIT_SHORT),$(GIT_COMMIT_SHORT)/,$(S3_BASE_PATH))
 	${HTMLMIN_CMD} $@ $@
 
 prd/404.html: src/404.html
