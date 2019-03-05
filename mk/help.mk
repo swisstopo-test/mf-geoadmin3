@@ -63,9 +63,12 @@ help:
 	@echo "|                     LAYERS CONFIG                                                                      |"
 	@echo "----------------------------------------------------------------------------------------------------------"
 	@echo
-	@echo "- configs/            Get layers config from API_URL=${API_URL} (current value)                            "
-	@echo "- s3uploadconfigint   Upload config to int bucket (as defined by S3_MF_GEOADMIN3_INT=$(S3_MF_GEOADMIN3_INT))"
-	@echo "- s3uploadconfigprod  Upload config to prod bucket (as defined by S3_MF_GEOADMIN3_PROD=$(S3_MF_GEOADMIN3_PROD))"
+	@echo "- configs/                 Get layers config from API_URL=${API_URL} (current value)                            "
+	@echo "- s3uploadconfigint        Upload config to int bucket (as defined by S3_MF_GEOADMIN3_INT=$(S3_MF_GEOADMIN3_INT))"
+	@echo "- s3uploadconfigprod       Upload config to prod bucket (as defined by S3_MF_GEOADMIN3_PROD=$(S3_MF_GEOADMIN3_PROD))"
+	@echo "Isolate a config for a given branch. Choose source with API_URL, and use the resulting configuration with the <config_url> param"
+	@echo "- s3uploadbranchconfigdev  Upload a configs to a deployed branch $(S3_BUCKET_DEV_URL)/$(DEPLOY_GIT_BRANCH)/configs"
+	@echo "- s3uploadbranchconfigint  Upload a configs to a deployed branch $(S3_BUCKET_INT_URL)/$(DEPLOY_GIT_BRANCH)/configs"
 	@echo
 	@echo "----------------------------------------------------------------------------------------------------------"
 	@echo "|                     VARNISH/CLOUDFRONT                                                                 |"

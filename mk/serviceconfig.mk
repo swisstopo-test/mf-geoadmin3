@@ -32,4 +32,9 @@ src/config.%.mako: src/config.mako \
 s3uploadconfig%: $(CONFIG_FILES)
 		$(foreach json,$^, gzip -c $(json) | ${AWS_CMD} s3 cp  $(S3_UPLOAD_HEADERS) - s3://$(S3_MF_GEOADMIN3_$(shell echo $(*)| tr a-z A-Z))/$(json);)
 
+# Upload the configs to s3://mf-geoadmin3-(dev|int|prod)-dublin/<git branch name>/configs/
+s3uploadbranchconfig%: configs/ $(CONFIG_FILES)
+		$(foreach json,$^, gzip -c $(json) | ${AWS_CMD} s3 cp  $(S3_UPLOAD_HEADERS) - s3://$(S3_MF_GEOADMIN3_$(shell echo $(*)| tr a-z A-Z))/$(DEPLOY_GIT_BRANCH)/$(json);)
+		@echo "Uploaded to " $(S3_BUCKET_$(shell echo $(*)| tr a-z A-Z)_URL)/$(DEPLOY_GIT_BRANCH)/configs 
+
 
