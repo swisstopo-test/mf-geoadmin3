@@ -14,7 +14,7 @@ endef
 USER_SOURCE ?= rc_user
 
 # mf-geoadmin3 or mvt_clean
-PROJECT ?= mf-geoadmin3
+PROJECT ?= mvt
 
 # Map libs variables
 OL_VERSION ?= be12573# September 25 2018 (mind the absence of a space character after the version)

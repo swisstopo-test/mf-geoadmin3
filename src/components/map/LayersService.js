@@ -320,7 +320,8 @@ goog.require('ga_urlutils_service');
                   '<a target="_blank" href="https://www.swisstopo.admin.ch/' + lang + '/home.html">swisstopo</a>',
                 styles: [{
                   id: 'default',
-                  url: 'https://vectortiles.geo.admin.ch/gl-styles/ch.swisstopo.leichte-basiskarte.vt/v006/style.json'
+                  /* url: 'https://vectortiles.geo.admin.ch/gl-styles/ch.swisstopo.leichte-basiskarte.vt/v006/style.json' */
+                  url: 'https://gist.githubusercontent.com/boecklic/8e6c098729660733e513734e79b2724b/raw/ea98d35a3a172c1f5345e5428495b458bd2cdf56/v006_style_singledomain.json'
                 }, {
                   id: 'color',
                   url: 'https://cms.geo.admin.ch/www.geo.admin.ch/cms_api/gl-styles/ch.swisstopo.leichte-basiskarte-vintage.vt_v006.json'
