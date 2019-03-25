@@ -19,7 +19,8 @@ prd/lib/: src/lib/d3.min.js \
 	mkdir -p $@
 	cp -rf  $^ $@
 
-prd/lib/Cesium/: src/lib/Cesium/Assets
+prd/lib/Cesium/: src/lib/Cesium/Assets  \
+		src/lib/Cesium/Cesium.js
 	mkdir -p $@
 	cp -rf  $^ $@
 
