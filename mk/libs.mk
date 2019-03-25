@@ -11,7 +11,8 @@ endef
 	git clone https://github.com/openlayers/ol-cesium.git $@
 
 .build-artefacts/cesium:
-	git clone https://github.com/camptocamp/cesium.git $@
+	#git clone https://github.com/camptocamp/cesium.git $@
+	git clone https://github.com/AnalyticalGraphicsInc/cesium.git $@
 
 # No npm module
 .build-artefacts/filesaver:
@@ -36,7 +37,6 @@ endef
 cesium: .build-artefacts/cesium
 	cd .build-artefacts/cesium; \
 	git fetch --all; \
-	git checkout $(CESIUM_VERSION); \
 	npm install; \
 	npm run combineRelease; \
 	npm run minifyRelease; \
