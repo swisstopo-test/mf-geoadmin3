@@ -11,7 +11,7 @@ phases:
       - which node
       - which npm
       - apt-get update
-      - apt-get install -y python-virtualenv python python-pip make gcc 
+      - apt-get install -y python-virtualenv python python-dev python-pip build-essential
   build:
     commands:
       - echo Build started on `date`
