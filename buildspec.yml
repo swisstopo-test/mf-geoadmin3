@@ -11,7 +11,7 @@ phases:
       - which node
       - which npm
       - apt-get update
-      - apt-get install -y python-virtualenv python python-dev python-pip build-essential
+      - apt-get install -y python-virtualenv python python-dev python-pip build-essential openjdk-7-jdk
   build:
     commands:
       - echo Build started on `date`
